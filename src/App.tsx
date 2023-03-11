@@ -1,8 +1,12 @@
-import { Typography } from "antd";
 import { FC } from "react";
-
-const { Title } = Typography;
+import { Routes, Route } from "react-router-dom";
+import { Beneficiary, Home } from "./pages";
 
 export const App: FC = () => {
-  return <Title level={4}>The United - Ramadan Kits 2023</Title>;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/beneficiary" element={<Beneficiary />} />
+    </Routes>
+  );
 };
