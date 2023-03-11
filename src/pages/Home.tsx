@@ -27,7 +27,7 @@ export const Home: FC = () => {
     <StyledLayout>
       <StyledTitle level={4}>The United - Ramadan Kits 2023</StyledTitle>
       <StyledContent>
-        <Link to="/beneficiary">
+        <Link to="/beneficiary/0">
           <Button type="primary">Beneficiary</Button>
         </Link>
       </StyledContent>
