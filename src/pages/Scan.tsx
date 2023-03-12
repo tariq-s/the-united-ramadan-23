@@ -8,7 +8,13 @@ export const Scan: FC = () => {
   return (
     <PageWrapper>
       <QrReader
-        videoContainerStyle={{ height: "100%" }}
+        containerStyle={{
+          height: "80%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        videoContainerStyle={{ width: "100%", maxWidth: "500px" }}
         constraints={{ facingMode: "environment" }}
         onResult={(result) => {
           result && navigate(`/beneficiary/${result.getText()}`);

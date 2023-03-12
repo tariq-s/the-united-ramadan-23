@@ -28,7 +28,7 @@ const RecievedKitSection = styled(Space)`
 export const BeneficiaryDetail: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [beneficiary, setBeneficiary] = useState<Beneficiary>();
+  const [beneficiary, setBeneficiary] = useState<Beneficiary | null>(null);
   const [kitReceived, setKitRecieved] = useState(beneficiary?.receivedKit);
   const { token } = useParams() as { token: string };
 
@@ -53,7 +53,12 @@ export const BeneficiaryDetail: FC = () => {
           <Spin />
         </CenterAlignedContent>
       )}
-      {!isLoading && !isError && (
+      {!isLoading && !isError && !beneficiary && (
+        <CenterAlignedContent>
+          Beneficiary information not found
+        </CenterAlignedContent>
+      )}
+      {!isLoading && !isError && beneficiary && (
         <>
           <Title level={5}>Name: {beneficiary?.name}</Title>
           <Title level={5}>Phone: {beneficiary?.phone}</Title>
