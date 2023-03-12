@@ -29,6 +29,7 @@ export const BeneficiaryDetail: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [beneficiary, setBeneficiary] = useState<Beneficiary>();
+  const [kitReceived, setKitRecieved] = useState(beneficiary?.receivedKit);
   const { token } = useParams() as { token: string };
 
   useEffect(() => {
@@ -38,6 +39,9 @@ export const BeneficiaryDetail: FC = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
+  useEffect(() => {
+    setKitRecieved(beneficiary?.receivedKit);
+  }, [beneficiary]);
   return (
     <PageWrapper>
       <TitleNav title="Beneficiary Information" />
@@ -54,18 +58,23 @@ export const BeneficiaryDetail: FC = () => {
           <Title level={5}>Name: {beneficiary?.name}</Title>
           <Title level={5}>Phone: {beneficiary?.phone}</Title>
           <Title level={5}>Address: {beneficiary?.address}</Title>
+          <Title level={5}>
+            Kit status: {kitReceived ? "Delivered" : "Not delivered"}
+          </Title>
           <RecievedKitSection size={20}>
-            <strong>Received kit:</strong>
+            <strong>Delivered kit:</strong>
             <Switch
               checkedChildren={<CheckOutlined />}
               unCheckedChildren={<CloseOutlined />}
-              defaultChecked={beneficiary?.receivedKit}
-              onChange={(checked) =>
+              checked={kitReceived}
+              disabled={kitReceived}
+              onChange={(checked) => {
                 BeneficiariesApi.updateBeneficiary({
                   ...beneficiary,
                   receivedKit: checked,
-                })
-              }
+                });
+                setKitRecieved(checked);
+              }}
             />
           </RecievedKitSection>
         </>
