@@ -60,14 +60,15 @@ export const BeneficiaryDetail: FC = () => {
       )}
       {!isLoading && !isError && beneficiary && (
         <>
-          <Title level={5}>Name: {beneficiary?.name}</Title>
-          <Title level={5}>Phone: {beneficiary?.phone}</Title>
-          <Title level={5}>Address: {beneficiary?.address}</Title>
+          <Title level={5}>Token: {beneficiary.token}</Title>
+          <Title level={5}>Name: {beneficiary.name}</Title>
+          <Title level={5}>Phone: {beneficiary.phone}</Title>
+          <Title level={5}>Address: {beneficiary.address}</Title>
           <Title level={5}>
             Kit status: {kitReceived ? "Delivered" : "Not delivered"}
           </Title>
           <RecievedKitSection size={20}>
-            <strong>Delivered kit:</strong>
+            <strong>{kitReceived ? "Delivered" : "Mark delivered"}</strong>
             <Switch
               checkedChildren={<CheckOutlined />}
               unCheckedChildren={<CloseOutlined />}
