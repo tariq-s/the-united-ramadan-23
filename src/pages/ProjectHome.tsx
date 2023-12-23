@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Typography, Layout, Button } from "antd";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -18,32 +17,26 @@ const StyledTitle = styled(Title)`
 const StyledContent = styled(Content)`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex: auto;
 `;
 
-const Card = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid purple;
-  padding: 20px;
-  font-size: large;
-  border-radius: 4px;
-  color: purple;
-`;
+interface Props {
+  project: ProjectType;
+  title: string;
+}
 
-export const Home = () => {
+export const ProjectHome = ({ project, title }: Props) => {
+  const linkTo = `/scan?project=${project}`;
   return (
     <PageWrapper>
-      <StyledTitle level={4}>The United Foundation</StyledTitle>
+      <StyledTitle level={4}>{title}</StyledTitle>
       <StyledContent>
-        <Link to="/ramadan-distribution">
-          <Card>Ramadan Distribution</Card>
-        </Link>
-        <Link to="/bread-basket">
-          <Card>Bread Basket</Card>
+        <Link to={linkTo}>
+          <Button size="large" icon={<ScanOutlined />} type="primary">
+            Scan QR
+          </Button>
         </Link>
       </StyledContent>
       <Banner />

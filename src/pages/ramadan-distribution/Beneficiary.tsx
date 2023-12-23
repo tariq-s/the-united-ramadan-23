@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { Space, Typography, Button, Switch } from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { BeneficiariesApi } from "../data/beneficiaries/api";
-import { Beneficiary } from "../data/beneficiaries/types";
+import { BeneficiariesApi } from "../../data/beneficiaries/api";
+import { Beneficiary } from "../../data/beneficiaries/types";
 import { Spin } from "antd";
-import { PageWrapper } from "./styles";
-import { TitleNav } from "../components/title-nav";
+import { PageWrapper } from "../styles";
+import { TitleNav } from "../../components/title-nav";
 
 const { Title } = Typography;
 
