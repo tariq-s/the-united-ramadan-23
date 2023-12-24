@@ -1,7 +1,7 @@
 import axios from "../../lib/axios";
 import { Beneficiary } from "./types";
 
-const ROOT_PATH = "/beneficiaries";
+const ROOT_PATH = "/api:f12GeLqA/beneficiaries";
 
 export const BeneficiariesApi = {
   getAllBeneficiaries: (): Promise<Beneficiary[]> => {
