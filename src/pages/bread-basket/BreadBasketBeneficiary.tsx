@@ -78,7 +78,9 @@ export const BreadBasketBeneficiaryDetail: FC = () => {
   const { token } = useParams() as { token: string };
 
   const currentDate = getCurrentDate();
-  const isDeliveredForThisMonth = deliveredFor?.includes(currentDate);
+  const isDeliveredForThisMonth = !!deliveredFor.find((d) =>
+    isSameMonthYear(d, currentDate)
+  );
   const currentDateDisplayValue = getDateDisplayValue(currentDate);
 
   useEffect(() => {
@@ -116,7 +118,7 @@ export const BreadBasketBeneficiaryDetail: FC = () => {
           {deliveredFor.length !== 0 ? (
             <DeliveredForSection>
               {deliveredFor.map((d) => (
-                <Tag>{getDateDisplayValue(d)}</Tag>
+                <Tag key={d}>{getDateDisplayValue(d)}</Tag>
               ))}
             </DeliveredForSection>
           ) : (

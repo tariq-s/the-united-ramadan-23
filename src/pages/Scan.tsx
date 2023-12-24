@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { PageWrapper } from "./styles";
 import { Result } from "@zxing/library";
 import { ProjectType } from "../data/project/types";
+import { TitleNav } from "../components/title-nav";
 
 export const Scan: FC = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export const Scan: FC = () => {
   };
   return (
     <PageWrapper>
+      <TitleNav title="Scan QR" />
       <QrReader
         containerStyle={{
           height: "80%",

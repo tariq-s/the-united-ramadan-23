@@ -1,18 +1,17 @@
 import { LeftOutlined } from "@ant-design/icons";
 import { Button, Space, Typography } from "antd";
 import { FC, ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 export const TitleNav: FC<{ title: ReactNode }> = ({ title }) => {
+  const navigate = useNavigate();
   return (
     <Space>
-      <Link to="/">
-        <Button type="text">
-          <LeftOutlined />
-        </Button>
-      </Link>
+      <Button onClick={() => navigate(-1)} type="text">
+        <LeftOutlined />
+      </Button>
       <Title level={4}>{title}</Title>
     </Space>
   );
