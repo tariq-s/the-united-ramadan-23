@@ -13,6 +13,7 @@ export const TitleNav: FC<{ title: ReactNode }> = ({ title }) => {
         <LeftOutlined />
       </Button>
       <Title level={4}>{title}</Title>
+      {"Added by"}
     </Space>
   );
 };
