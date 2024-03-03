@@ -12,7 +12,6 @@ export const TitleNav: FC<{ title: ReactNode }> = ({ title }) => {
       <Button onClick={() => navigate(-1)} type="text">
         <LeftOutlined />
       </Button>
-      ;mfvmf
       <Title level={4}>{title}</Title>
     </Space>
   );
